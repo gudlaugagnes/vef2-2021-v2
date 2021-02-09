@@ -8,11 +8,13 @@
     "test:stylelint": "stylelint \"./public/styles.css\" --syntax css",
     "eslint": "npm run eslint-js -s && npm run eslint-html -s",
     "test": "concurrently npm:test:*",
-    "build:sass": "node-sass --source-map-embed ./public/styles.scss ./public/styles.css",
     "build": "concurrently npm:build:*",
-    "dev": "npm run build:sass && concurrently npm:dev:*",
+    "dev": "concurrently npm:dev:*",
     "start-dev": "nodemon app.js",
     "start": "node app.js"
+  },
+  "engines": {
+    "node": "v14.15.4"
   },
   "repository": {
     "type": "git",
