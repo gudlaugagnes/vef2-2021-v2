@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import express from 'express';
 import { check, validationResult } from 'express-validator';
 import xss from 'xss';
@@ -47,12 +48,12 @@ const validations = [
 const sanitazions = [
   check('name').trim().escape(),
   sanitizeXss('name'),
-  
+
   sanitizeXss('nationalId'),
   check('nationalId')
     .trim().blacklist('-').escape()
     .toInt(),
-  
+
   sanitizeXss('comment'),
   check('comment').trim().escape(),
 ];
@@ -70,10 +71,10 @@ async function form(req, res) {
   const result = await query('SELECT * from signatures;');
   const { rows } = result;
   const { rowCount } = result;
-    
+
   res.render('form', { data, rows, rowCount });
 }
-  
+
 /**
    * Route handler sem athugar stöðu á umsókn og birtir villur ef einhverjar,
    * sendir annars áfram í næsta middleware.
@@ -93,7 +94,7 @@ async function showErrors(req, res, next) {
       anonymous = 'false',
     } = {},
   } = req;
-  
+
   const data = {
     title,
     name,
@@ -101,9 +102,9 @@ async function showErrors(req, res, next) {
     comment,
     anonymous,
   };
-  
+
   const validation = validationResult(req);
-  
+
   if (!validation.isEmpty()) {
     const errors = validation.array();
     data.errors = errors;
@@ -112,13 +113,13 @@ async function showErrors(req, res, next) {
     const result = await query('SELECT * FROM signatures');
     const { rows } = result;
     const { rowCount } = result;
-  
+
     return res.render('form', { data, rows, rowCount });
   }
-  
+
   return next();
 }
-  
+
 async function formPost(req, res) {
   const {
     body: {
@@ -128,21 +129,21 @@ async function formPost(req, res) {
       anonymous = 'false',
     } = {},
   } = req;
-  
+
   const data = {
     name,
     nationalId,
     comment,
     anonymous,
   };
-  
+
   await insert(data);
   form(req, res);
 }
 
 router.use(express.urlencoded({ extended: true }));
 router.get('/', catchErrors(form));
- 
+
 router.post(
   '/',
   // Athugar hvort form sé í lagi

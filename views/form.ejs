@@ -3,32 +3,56 @@
 <h1>Undirskriftarlisti</h1>
 
 <form method="post" action="/">
-  <div class="field<%= locals.isInvalid('name', errors) ?  ' field--invalid' : '' %>">
-    <label for="name">Nafn</label>
-    <input type="text" name="name" id="name" value="<%= name %>" class="">
+  <div class="form__field">
+      <label class="form__label" for="name">Nafn*</label>
+      <input class="form__input<%= locals.isInvalid('name', data.errors) ? ' form__input--invalid' : '' %>" type="text" id="name" name="name" value="<%= data.name %>"><br>
   </div>
-  <div class="field<%= locals.isInvalid('nId', errors) ?  ' field--invalid' : '' %>">
-    <label for="nId">Kennitala</label>
-    <input type="text" name="nId" id="nId" value="<%= nId %>" class="">
+  <div class="form__field">
+      <label class="form__label" for="nationalId">Kennitala*</label>
+      <input class="form__input<%= locals.isInvalid('nationalId', data.errors) ? ' form__input--invalid' : '' %>" type="text" id="nationalId" name="nationalId" value="<%= data.nationalId %>" placeholder="000000-0000"><br>
   </div>
-  <div class="field<%= locals.isInvalid('text', errors) ?  ' field--invalid' : '' %>">
-    <label for="text">Athugasemdir:</label>
-    <textarea name="nId" id="nId"><%= text %></textarea>
+  <div class="form__field">
+      <label class="form__label" for="comment">Athugasemd:</label>
+      <textarea class="form__input<%= locals.isInvalid('comment', data.errors) ? ' form__input--invalid' : '' %>" type="text" id="comment" name="comment"><%= data.comment %></textarea><br>
   </div>
-  <div class="field field--checkbox<%= locals.isInvalid('anon', errors) ?  ' field--invalid' : '' %>">
-    <label><input type="checkbox" name="anon" value="nafnlaust" <%= job === 'nafnlaust' ? 'checked' : '' %>> Nafnlaust</label>
+  <div class="form__checkboxfield">
+      <input class="form__checkbox" type="checkbox" id="anonymous" name="anonymous" <%= (data.anonymous === true) ? 'checked' : '' %>><br>
+      <label class="form__checkboxlabel" for="anonymous">Ekki birta nafn á lista</label>
   </div>
-
-  <% if (errors.length > 0) { %>
-    <h2>Vandræði við að senda umsókn:</h2>
-    <ul class="errors">
-      <% errors.forEach((error) => { %>
-        <li class="error"><label for="<%= error.param %>"><%= error.msg %></label></li>
-      <% }); %>
-    </ul>
-  <% } %>
-
-  <button>Senda umsókn</button>
+  <% if (data.errors) { %>
+    <div class="form__errors">
+        <ul class="form__erroritem">
+            <% data.errors.forEach((error) => { %>
+                <li class="form__error"><%= error.msg %></li>
+            <% }) %>
+        </ul>
+    </div>
+<% } %>
+    
+      <button>Skrifa undir</button>
 </form>
+
+<hr>
+
+<% if (rowCount !== 0) { %>
+  <table class="signature__table">
+      <tr class="signature__rowname">
+          <th class="signature__date">Dags</th>
+          <th class="signature__name">Nafn</th>
+          <th class="signature__comment">Athugasemd</th>
+      </tr>
+      <% rows.forEach((signature) => { %>
+          <tr class="signature__item">
+              <td class="signature__field"><%= locals.parseDate(signature.signed) %></td>
+              <td class="signature__field">
+                  <%= (signature.anonymous) ? 'Nafnlaust' : signature.name %>
+              </td>
+              <td class="signature__field"><%= signature.comment %></td>
+          </tr>
+      <% }) %>
+  </table>
+<% } else { %>
+  <p class="signature__text">Engar undirskriftir.</p>
+<% } %>
 
 <%- include('footer') -%>
