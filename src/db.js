@@ -1,4 +1,6 @@
+// eslint-disable-next-line import/no-unresolved
 import pg from 'pg';
+// eslint-disable-next-line import/no-unresolved
 import dotenv from 'dotenv';
 
 dotenv.config();

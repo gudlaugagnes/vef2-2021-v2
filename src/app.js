@@ -1,6 +1,10 @@
+// eslint-disable-next-line import/no-unresolved
 import express from 'express';
+// eslint-disable-next-line import/no-unresolved
 import dotenv from 'dotenv';
+// eslint-disable-next-line import/no-unresolved
 import date from 'date-and-time';
+// eslint-disable-next-line import/no-unresolved
 import { router } from './registration.js';
 
 dotenv.config();

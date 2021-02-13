@@ -1,6 +1,8 @@
 import fs from 'fs';
 import util from 'util';
+// eslint-disable-next-line import/no-unresolved
 import Client from 'pg';
+// eslint-disable-next-line import/no-unresolved
 import dotenv from 'dotenv';
 
 dotenv.config();
