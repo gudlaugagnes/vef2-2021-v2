@@ -30,12 +30,24 @@ h1 {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 3rem;
   font-weight: bold;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: bold;
+  text-align: center;
 }
 
 main {
   margin: 2rem;
 }
 
+form {
+  width: 50%;
+
+}
 .form__field {
   display: flex;
   flex-direction: column;
@@ -71,16 +83,53 @@ button {
   padding: 0.5rem;
   background-color: #fff;
   transition: background-color ease-in 300ms;
+  font-size: 1.5rem;
+  display: block;
+  margin: 1rem auto 1rem auto;
 }
 
 button:hover {
   background-color: #bbb;
 }
 
+.button__box {
+  align-items: center;
+}
+
 .errors {
   margin-bottom: 2rem;
 }
 
+.form__errors {
+  text-align: center;
+}
+
+ul {
+  display: inline-block; text-align: left;
+}
+
+table, td, th {
+  border: 0.5px solid rgb(136, 114, 6);
+}
+
+table {
+  width: 50%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+}
+
+th, td {
+  height: 2rem;
+}
+
+td {
+  padding-left: 1rem;
+}
+
+.form__checkbox {
+  display: grid;
+  grid-auto-flow: column;
+}
 
 @media (min-width: 600px) {
   .form__field{

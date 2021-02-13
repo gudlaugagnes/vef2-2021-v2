@@ -42,7 +42,7 @@ const validations = [
 
   check('comment')
     .isLength({ max: 100 })
-    .withMessage('Athugasemd má að hámrki vera 100 stafir'),
+    .withMessage('Athugasemd má að hámarki vera 100 stafir'),
 ];
 
 const sanitazions = [
