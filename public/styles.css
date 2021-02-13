@@ -1,0 +1,97 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html { /* stylelint-disable-line */
+  box-sizing: border-box;
+  overflow-x: hidden;
+
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  background-color: #fdeed8;
+}
+
+input,
+textarea,
+button {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+h1 {
+  margin-bottom: 1rem;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+main {
+  margin: 2rem;
+}
+
+.form__field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.form__field label {
+  font-size: 1.375rem;
+}
+
+.form__field input,
+.form__field textarea {
+  padding: 8px;
+  max-width: 800px;
+
+  border: 1px solid #888;
+  border-radius: 3px;
+}
+
+.form__field textarea {
+  flex: 1;
+  min-height: 6rem;
+}
+
+.form__input--invalid input{
+  border-color: #855;
+  background-color: #fbb;
+}
+
+button {
+  border: 1px solid #888;
+  border-radius: 3px;
+  padding: 0.5rem;
+  background-color: #fff;
+  transition: background-color ease-in 300ms;
+}
+
+button:hover {
+  background-color: #bbb;
+}
+
+.errors {
+  margin-bottom: 2rem;
+}
+
+
+@media (min-width: 600px) {
+  .form__field{
+    flex-direction: row;
+  }
+
+  .form__field label {
+    flex: 0 0 200px;
+  }
+
+  .form__field input {
+    flex: 1;
+  }
+}

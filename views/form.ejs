@@ -3,13 +3,13 @@
 <h1>Undirskriftarlisti</h1>
 
 <form method="post" action="/">
-  <div class="form__field">
+  <div class="form__field<%= locals.isInvalid('name', data.errors) ? ' form__input--invalid' : '' %>">
       <label class="form__label" for="name">Nafn*</label>
-      <input class="form__input<%= locals.isInvalid('name', data.errors) ? ' form__input--invalid' : '' %>" type="text" id="name" name="name" value="<%= data.name %>"><br>
+      <input class="form__input" type="text" id="name" name="name" value="<%= data.name %>"><br>
   </div>
-  <div class="form__field">
+  <div class="form__field<%= locals.isInvalid('nationalId', data.errors) ? ' form__input--invalid' : '' %>">
       <label class="form__label" for="nationalId">Kennitala*</label>
-      <input class="form__input<%= locals.isInvalid('nationalId', data.errors) ? ' form__input--invalid' : '' %>" type="text" id="nationalId" name="nationalId" value="<%= data.nationalId %>" placeholder="000000-0000"><br>
+      <input class="form__input" type="text" id="nationalId" name="nationalId" value="<%= data.nationalId %>" placeholder="000000-0000"><br>
   </div>
   <div class="form__field">
       <label class="form__label" for="comment">Athugasemd:</label>
