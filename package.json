@@ -2,7 +2,7 @@
   "name": "verkefni2",
   "version": "1.0.0",
   "description": "[Kynning í fyrirlestri](https://www.youtube.com/watch?v=1kRJBE040oY).",
-  "main": ".eslintrc.js",
+  "main": "index.js",
   "scripts": {
     "test:eslint": "eslint \"./src/**/*.js\" --fix && eslint \"./**/*.js\" --fix",
     "test:stylelint": "stylelint \"./public/styles.css\" --syntax css",
@@ -11,7 +11,8 @@
     "build": "concurrently npm:build:*",
     "dev": "concurrently npm:dev:*",
     "start-dev": "nodemon app.js",
-    "start": "node app.js"
+    "start": "node ./src/app.js",
+    "setup": "node ./src/setup.js"
   },
   "engines": {
     "node": "v14.15.4"
@@ -31,8 +32,12 @@
     "concurrently": "^5.3.0",
     "dotenv": "^8.2.0",
     "ejs": "^3.1.6",
+    "eslint-config-airbnb-base": "^14.2.1",
     "express": "^4.17.1",
-    "pq": "0.0.3"
+    "express-validator": "^6.9.2",
+    "pg": "^8.5.1",
+    "pq": "0.0.3",
+    "xss": "^1.0.8"
   },
   "devDependencies": {
     "eslint": "^7.19.0",

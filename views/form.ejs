@@ -1,0 +1,34 @@
+<%- include('header') -%>
+
+<h1>Undirskriftarlisti</h1>
+
+<form method="post" action="/">
+  <div class="field<%= locals.isInvalid('name', errors) ?  ' field--invalid' : '' %>">
+    <label for="name">Nafn</label>
+    <input type="text" name="name" id="name" value="<%= name %>" class="">
+  </div>
+  <div class="field<%= locals.isInvalid('nId', errors) ?  ' field--invalid' : '' %>">
+    <label for="nId">Kennitala</label>
+    <input type="text" name="nId" id="nId" value="<%= nId %>" class="">
+  </div>
+  <div class="field<%= locals.isInvalid('text', errors) ?  ' field--invalid' : '' %>">
+    <label for="text">Athugasemdir:</label>
+    <textarea name="nId" id="nId"><%= text %></textarea>
+  </div>
+  <div class="field field--checkbox<%= locals.isInvalid('anon', errors) ?  ' field--invalid' : '' %>">
+    <label><input type="checkbox" name="anon" value="nafnlaust" <%= job === 'nafnlaust' ? 'checked' : '' %>> Nafnlaust</label>
+  </div>
+
+  <% if (errors.length > 0) { %>
+    <h2>Vandræði við að senda umsókn:</h2>
+    <ul class="errors">
+      <% errors.forEach((error) => { %>
+        <li class="error"><label for="<%= error.param %>"><%= error.msg %></label></li>
+      <% }); %>
+    </ul>
+  <% } %>
+
+  <button>Senda umsókn</button>
+</form>
+
+<%- include('footer') -%>
