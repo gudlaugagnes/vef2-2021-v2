@@ -2,6 +2,7 @@
 import express from 'express';
 import { check, validationResult } from 'express-validator';
 import xss from 'xss';
+// eslint-disable-next-line import/named
 import { insert, query } from './db.js';
 
 function catchErrors(fn) {

@@ -1,6 +1,6 @@
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
 }
 
 *,
@@ -9,13 +9,12 @@
   box-sizing: inherit;
 }
 
-html { /* stylelint-disable-line */
+html {
+  background-color: #fdeed8;
   box-sizing: border-box;
-  overflow-x: hidden;
-
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
-  background-color: #fdeed8;
+  overflow-x: hidden;
 }
 
 input,
@@ -26,17 +25,17 @@ button {
 }
 
 h1 {
-  margin-bottom: 1rem;
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 3rem;
   font-weight: bold;
+  margin-bottom: 1rem;
   text-align: center;
 }
 
 h2 {
-  margin-bottom: 1rem;
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: bold;
+  margin-bottom: 1rem;
   text-align: center;
 }
 
@@ -46,53 +45,52 @@ main {
 
 form {
   width: 50%;
-
 }
-.form__field {
+
+.form-field {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
 }
 
-.form__field label {
+.form-field label {
   font-size: 1.375rem;
 }
 
-.form__field input,
-.form__field textarea {
-  padding: 8px;
-  max-width: 800px;
-
+.form-field input,
+.form-field textarea {
   border: 1px solid #888;
   border-radius: 3px;
+  max-width: 800px;
+  padding: 8px;
 }
 
-.form__field textarea {
+.form-field textarea {
   flex: 1;
   min-height: 6rem;
 }
 
-.form__input--invalid input{
-  border-color: #855;
+.form-input--invalid input {
   background-color: #fbb;
+  border-color: #855;
 }
 
 button {
+  background-color: #fff;
   border: 1px solid #888;
   border-radius: 3px;
-  padding: 0.5rem;
-  background-color: #fff;
-  transition: background-color ease-in 300ms;
-  font-size: 1.5rem;
   display: block;
-  margin: 1rem auto 1rem auto;
+  font-size: 1.5rem;
+  margin: 1rem auto;
+  padding: 0.5rem;
+  transition: background-color ease-in 300ms;
 }
 
 button:hover {
   background-color: #bbb;
 }
 
-.button__box {
+.button-box {
   align-items: center;
 }
 
@@ -100,25 +98,29 @@ button:hover {
   margin-bottom: 2rem;
 }
 
-.form__errors {
+.form-errors {
   text-align: center;
 }
 
 ul {
-  display: inline-block; text-align: left;
+  display: inline-block;
+  text-align: left;
 }
 
-table, td, th {
+table,
+td,
+th {
   border: 0.5px solid rgb(136, 114, 6);
 }
 
 table {
-  width: 50%;
   border-collapse: collapse;
   margin-top: 2rem;
+  width: 50%;
 }
 
-th, td {
+th,
+td {
   height: 2rem;
 }
 
@@ -126,21 +128,20 @@ td {
   padding-left: 1rem;
 }
 
-.form__checkbox {
-  display: grid;
-  grid-auto-flow: column;
+.form-checkbox {
+  text-align: center;
 }
 
 @media (min-width: 600px) {
-  .form__field{
+  .form-field {
     flex-direction: row;
   }
 
-  .form__field label {
+  .form-field label {
     flex: 0 0 200px;
   }
 
-  .form__field input {
+  .form-field input {
     flex: 1;
   }
 }

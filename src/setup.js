@@ -1,18 +1,20 @@
 import fs from 'fs';
 import util from 'util';
 // eslint-disable-next-line import/no-unresolved
-import Client from 'pg';
+import pg from 'pg';
 // eslint-disable-next-line import/no-unresolved
 import dotenv from 'dotenv';
 
 dotenv.config();
 
-const connectionString = process.env.DATABASE_URL;
+const {
+  DATABASE_URL: connectionString,
+} = process.env;
 
 const readFileAsync = util.promisify(fs.readFile);
 
 async function query(q) {
-  const client = new Client({ connectionString });
+  const client = new pg.Client({ connectionString });
 
   await client.connect();
 
@@ -37,7 +39,7 @@ async function main() {
 
   // búa til töflu út frá skema
   try {
-    const createTable = await readFileAsync('../schema.sql');
+    const createTable = await readFileAsync('./sql/schema.sql');
     await query(createTable.toString('utf8'));
     console.info('Tafla búin til');
   } catch (e) {
@@ -47,7 +49,7 @@ async function main() {
 
   // bæta færslum við töflu
   try {
-    const insert = await readFileAsync('../sql/fake.sql');
+    const insert = await readFileAsync('./sql/fake.sql');
     await query(insert.toString('utf8'));
     console.info('Gögnum bætt við');
   } catch (e) {

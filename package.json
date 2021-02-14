@@ -4,10 +4,9 @@
   "description": "[Kynning í fyrirlestri](https://www.youtube.com/watch?v=1kRJBE040oY).",
   "main": ".eslintrc.js",
   "scripts": {
-    "test:eslint": "eslint \"./src/**/*.js\" --fix && eslint \"./**/*.js\" --fix",
-    "test:stylelint": "stylelint \"./public/styles.css\" --syntax css",
-    "eslint": "npm run eslint-js -s && npm run eslint-html -s",
-    "test": "concurrently npm:test:*",
+    "eslint": "eslint src/*.js",
+    "stylelint": "stylelint ./public/styles.css --syntax css",
+    "test": "concurrently npm:eslint npm:stylelint",
     "build": "concurrently npm:build:*",
     "dev": "concurrently npm:dev:*",
     "start-dev": "nodemon ./src/app.js",
