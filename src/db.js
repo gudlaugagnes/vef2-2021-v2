@@ -27,9 +27,6 @@ if (!connectionString) {
   process.exit(1);
 }
 
-// TODO gagnagrunnstengingar
-const pool = new pg.Pool({ connectionString });
-
 pool.on('error', (err) => {
   console.error('Unexpected error on idle client', err);
   process.exit(-1);
